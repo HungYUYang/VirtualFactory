@@ -1,0 +1,30 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using FactoryCore;
+
+namespace Maxxis
+{
+    public class Produce: IProduce
+    {
+        ITask task;
+        public Produce(ITask task)
+        {
+            try {
+                this.task = task;
+            }
+            catch {
+                throw;
+            }
+        }
+        public void START()
+        {
+            string Company = task.Hashtable["Company"].ToString();
+            string ProductName = task.Hashtable["ProductName"].ToString();
+            string ProduceDateTime = DateTime.Now.ToString();
+            Console.WriteLine("{0} produce the {1} in {2}", Company, ProductName, ProduceDateTime);
+        }
+    }
+}
